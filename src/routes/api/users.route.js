@@ -4,7 +4,7 @@ import * as UserController from "../../controllers/user.controller";
 const api = Router();
 
 api.get("/", UserController.findAll)
-api.get("/:id/profile", UserController.findOne)
+api.get("/:id/profile", UserController.findProfile)
 api.patch("/:id/profile", UserController.updateOne)
 api.delete("/:id", UserController.deleteOne)
 

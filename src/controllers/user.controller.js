@@ -1,9 +1,9 @@
 import * as UserModel from "../models/User.model";
 
-export const findOne = async (request, response) => {
+export const findProfile = async (request, response) => {
   const { id } = request.params
-  console.log('findOne')
-  const profile = await UserModel.findOne(id)
+  console.log('findProfile')
+  const profile = await UserModel.findProfile(id)
   response
     .status(200)
     .json(profile)

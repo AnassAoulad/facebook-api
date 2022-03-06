@@ -1,11 +1,11 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-export const createPostDto = (message, authorId) =>
+export const createPostDto = (authorId, message) =>
   prisma.post.create({
     data: {
-      message: message,
       authorId: authorId,
+      message: message,
     }
   })
 
@@ -15,11 +15,10 @@ export const findOne = (id) => prisma.post.findUnique({
   },
 })
 
-export const findAll = () => prisma.post.findMany()
+export const findAll = () => prisma.post.findMany({})
 
 export const updatePostDto = (id, message) => prisma.post.update({
   where: {
-    // authorId: authorId
     id: id
   },
   data: {
