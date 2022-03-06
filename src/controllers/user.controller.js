@@ -1,65 +1,42 @@
 import * as UserModel from "../models/User.model";
 
-let date = new Date
-// fonctionne
-export const createUser = async (request, response) => {
-  const { email, password } = request.body
+export const findOne = async (request, response) => {
+  const { id } = request.params
+  console.log('findOne')
+  const profile = await UserModel.findOne(id)
   response
-    .status(201)
-    .json({
-      data: {
-        user: await UserModel.createUser({ id: '10', email: 'petert', password: 'peter', updatedAt: date, createdAt: date })
-      }
-    });
+    .status(200)
+    .json(profile)
 }
 
 export const findAll = async (_request, response) => {
+  console.log('findAll')
+  const users = await UserModel.findAll()
   response
     .status(200)
-    .json({ users: await UserModel.findAll() })
+    .json(users)
 }
 
-export const findProfile = async (request, response) => {
-  const { id } = request.params;
+export const updateOne = async (request, response) => {
+  const { id } = request.params
+  console.log('update')
+  const payload = request.body
+  const profile = await UserModel.updateOne(id, payload.firstName, payload.lastName)
 
   response
     .status(200)
     .json({
-      data: {
-        profile: await UserModel.findProfile(Number(id))
-      }
+      profile
     })
 }
 
-// export const findOne = (request, response) => {
-//   const { id } = request.params;
-
-//   const article = ArticleModel.findOne(Number(id))
-//   if (!article) throw new ErrorNotFound();
-
-//   response
-//     .status(200)
-//     .json({ article });
-// }
-
-// export const updateOne = (request, response) => {
-//   const { id } = request.params
-//   const { title, content } = request.body;
-
-//   const article = ArticleModel.updateOne({ id: Number(id), title, content });
-//   if (!article) throw new ErrorNotFound();
-
-//   response
-//     .status(200)
-//     .json({ article });
-// }
-
-// export const deleteOne = (request, response) => {
-//   const { id } = request.params;
-
-//   ArticleModel.deleteOne(Number(id));
-
-//   response
-//     .status(204)
-//     .end();
-// }
+export const deleteOne = async (request, response) => {
+  const { id } = request.params
+  console.log('detele')
+  const user = await UserModel.deleteOne(Number(id))
+  response
+    .status(200)
+    .json(
+      user
+    )
+}

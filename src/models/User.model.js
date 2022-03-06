@@ -1,18 +1,33 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-export const createUser = (data) =>
-  prisma.user.create({ data })
+export const findOne = (id) =>
+  prisma.profile.findUnique({
+    where: {
+      userId: id
+    }
+  })
 
-// display all user
 export const findAll = () => prisma.user.findMany({})
 
-// display user profile
-export const findProfile = (id) => prisma.user.findMany({
+export const updateOne = (id, firstName, lastName) =>
+  prisma.profile.update({
+    where: {
+      userId: id
+    },
+    data: {
+      firstName: firstName,
+      lastName: lastName
+    }
+  })
+
+export const deleteOne = (id) => prisma.user.delete({
   where: {
-    userId: id,
-  },
+    id: id
+  }
 })
+
+// authentification
 
 // // display list of user post
 // export const listPosts = (id) => await prisma.user.findAll({
