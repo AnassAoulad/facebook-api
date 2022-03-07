@@ -4,7 +4,7 @@
   },
   "name": "facebook-api",
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node prisma/seed.js"
   },
   "dependencies": {
     "@babel/cli": "^7.16.8",

@@ -1,4 +1,4 @@
-const handleError = (error, _request, response, _next) => {
+export const handleError = (error, _request, response, _next) => {
   const {
     code = 'UNKNOWN',
     statusCode = 500,
@@ -9,5 +9,3 @@ const handleError = (error, _request, response, _next) => {
     error: { code, message },
   });
 }
-
-export default handleError;

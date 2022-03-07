@@ -1,6 +1,13 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
+export const findPosts = (id) =>
+  prisma.post.findMany({
+    where: {
+      authorId: id
+    }
+  })
+
 export const findProfile = (id) =>
   prisma.profile.findUnique({
     where: {

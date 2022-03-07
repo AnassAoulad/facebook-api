@@ -6,11 +6,10 @@ export const login = async (request, response) => {
 
   const user = await AuthenticationModel.findByCredentials({ email, password }, { id: true, email: true });
   const token = jwt.sign({ id: user.id }, 'SECRET')
-  response.json({ token, user })
+  response.status(200).json({ token, user })
 }
 
 export const registerDto = async (request, response) => {
-  console.log('create user')
   const { email, password } = request.body
   const user = await AuthenticationModel.registerDto({ email, password })
   response

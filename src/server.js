@@ -1,6 +1,6 @@
 import express from "express";
 import routes from "./routes";
-import handleError from "./middlewares/handleError.middleware";
+import { handleError } from "./middlewares/handleError.middleware";
 
 export const launch = ({ protocol, port, host }) => {
   const application = express();
