@@ -1,17 +1,42 @@
+## Before to start
+
+:book: NodeJs : 16.14.0
+
+## How to start
+
+1. Clone the repo
+
+```
+$ git clone
+```
+
 1. Install the modules
 ```
-$~/learn-rest-api/workshop/blog-api> yarn install
+$ yarn install
 
 or
 
-$~/learn-rest-api/workshop/blog-api> npm install
+$ npm install
 ```
 
-2. Run the API
+3. Inizialise database
 ```
-$~/learn-rest-api/workshop/blog-api> yarn dev
+# Apply migrationn
+$ npx prisma migrate dev
+
+# Create content in database
+$ yarn prisma db seed
 
 or
 
-$~/learn-rest-api/workshop/blog-api> npm run dev
+$ npm prisma db seed
+
+```
+4. Run the API
+```
+$ yarn dev
+
+or
+
+$ npm run dev
 ```
